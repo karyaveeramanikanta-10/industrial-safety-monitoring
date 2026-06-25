@@ -1,0 +1,127 @@
+# =============================================================================
+# Industrial Safety Monitoring System — Configuration
+# =============================================================================
+# Edit this file to customize detection parameters, alert settings,
+# and system behavior. All values can be overridden at runtime.
+
+detection:
+  confidence_threshold: 0.5
+  model_path: "models/person_detector"
+  input_size: 320
+  max_detections: 20
+  nms_threshold: 0.4
+
+ppe:
+  required_items:
+    - helmet
+    - vest
+  min_area_ratios:
+    helmet: 0.12
+    vest: 0.18
+    mask: 0.10
+    goggles: 0.05
+    gloves: 0.08
+    ear_protection: 0.05
+    shoes: 0.10
+  color_ranges:
+    helmet:
+      white:
+        lower: [0, 0, 180]
+        upper: [180, 30, 255]
+      yellow:
+        lower: [20, 80, 80]
+        upper: [35, 255, 255]
+      blue:
+        lower: [100, 80, 80]
+        upper: [130, 255, 255]
+      red:
+        lower: [0, 100, 100]
+        upper: [10, 255, 255]
+      orange:
+        lower: [10, 100, 100]
+        upper: [20, 255, 255]
+    vest:
+      hi_vis_yellow:
+        lower: [20, 100, 100]
+        upper: [35, 255, 255]
+      hi_vis_orange:
+        lower: [5, 100, 100]
+        upper: [18, 255, 255]
+    gloves:
+      blue:
+        lower: [100, 50, 50]
+        upper: [130, 255, 255]
+      orange:
+        lower: [5, 100, 100]
+        upper: [20, 255, 255]
+    mask:
+      white:
+        lower: [0, 0, 180]
+        upper: [180, 30, 255]
+      blue:
+        lower: [90, 50, 50]
+        upper: [130, 255, 255]
+    goggles:
+      clear:
+        lower: [0, 0, 200]
+        upper: [180, 30, 255]
+    ear_protection:
+      yellow:
+        lower: [20, 80, 80]
+        upper: [35, 255, 255]
+      red:
+        lower: [0, 100, 100]
+        upper: [10, 255, 255]
+    shoes:
+      black:
+        lower: [0, 0, 0]
+        upper: [180, 255, 50]
+      brown:
+        lower: [10, 50, 20]
+        upper: [20, 200, 150]
+
+tracker:
+  algorithm: "centroid"
+  max_disappeared: 50
+  max_distance: 50
+
+alerts:
+  cooldown_seconds: 30
+  sound_enabled: true
+  sound_file: "assets/alert_sound.wav"
+  email_enabled: false
+  smtp_server: "smtp.gmail.com"
+  smtp_port: 587
+  smtp_username: ""
+  smtp_password: ""
+  email_recipients: []
+  sms_enabled: false
+  twilio_account_sid: ""
+  twilio_auth_token: ""
+  twilio_from_number: ""
+  sms_recipients: []
+
+database:
+  # MongoDB Atlas connection
+  # Set MONGO_URI environment variable with your connection string (recommended)
+  # Or set mongo_uri here directly (less secure):
+  mongo_uri: "mongodb+srv://arya_project:Arya098@cluster0.peyfkkj.mongodb.net/?appName=Cluster0"
+  db_name: "safety_monitoring"
+
+video:
+  source: 0
+  width: 640
+  height: 480
+  fps_cap: 30
+
+logging:
+  level: "INFO"
+  log_file: "logs/system.log"
+  max_file_size_mb: 5
+  backup_count: 5
+
+dashboard:
+  title: "Industrial Safety Monitoring System"
+  refresh_rate: 1
+  max_alerts_display: 20
+  chart_history_hours: 24
