@@ -1,5 +1,8 @@
 # 🏭 Industrial Safety Monitoring System
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/karyaveeramanikanta-10/industrial-safety-monitoring/actions/workflows/python-ci.yml/badge.svg)](.github/workflows/python-ci.yml)
+
 > Real-time PPE compliance monitoring powered by computer vision
 
 A comprehensive Python-based system that analyzes live webcam feeds or recorded videos to ensure industrial workers are wearing required Personal Protective Equipment (PPE). Detects people using SSD MobileNet V2, identifies safety gear through color-based heuristics, tracks workers across frames, and provides real-time alerts and analytics.

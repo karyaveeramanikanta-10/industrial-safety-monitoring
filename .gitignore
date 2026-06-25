@@ -51,7 +51,6 @@ coverage.xml
 
 # Data, models, logs
 data/
-models/
 logs/
 
 # macOS
@@ -66,3 +65,17 @@ Thumbs.db
 # SQLite
 *.sqlite3
 *.db
+
+# Node
+node_modules/
+
+# Local database files (remove tracked DB files)
+database/*.db
+database/*.db-shm
+database/*.db-wal
+
+# Ignore environment files
+.env
+.venv/
+venv/
+ENV/
